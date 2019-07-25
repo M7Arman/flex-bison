@@ -375,8 +375,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 8
-#define YY_END_OF_BUFFER 9
+#define YY_NUM_RULES 9
+#define YY_END_OF_BUFFER 10
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -386,7 +386,7 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[14] =
     {   0,
-        0,    0,    9,    7,    6,    8,    3,    1,    2,    4,
+        0,    0,   10,    8,    7,    6,    3,    1,    2,    4,
         5,    5,    0
     } ;
 
@@ -772,21 +772,27 @@ YY_RULE_SETUP
 { yylval = atoi(yytext); return NUMBER; }
 	YY_BREAK
 case 6:
+/* rule 6 can match eol */
 YY_RULE_SETUP
 #line 12 "calc.l"
-{ /* ignore whitespace */ }
+{ return EOL; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 13 "calc.l"
-{ printf("INVALID CHAR: %c\n", *yytext); }
+{ /* ignore whitespace */ }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 14 "calc.l"
+{ printf("INVALID CHAR: %c\n", *yytext); }
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 15 "calc.l"
 ECHO;
 	YY_BREAK
-#line 790 "lex.yy.c"
+#line 796 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1787,6 +1793,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 14 "calc.l"
+#line 15 "calc.l"
 
 
